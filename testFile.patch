@@ -1,0 +1,77 @@
+Index: src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/company/Main.java	(revision bd5c166a05477ac8daad1860431ae658aadb13e6)
++++ src/com/company/Main.java	(revision )
+@@ -1,8 +1,15 @@
+ package com.company;
+ 
++import java.io.IOException;
++import java.io.File;
++
+ public class Main {
+ 
+-    public static void main(String[] args) {
+-	// write your code here
++    public static void main(String[] args) throws IOException {
++	//this for testing file
++
++        File file = new File("chars.txt");
++        HuffmanTree huffman = new HuffmanTree();
++        huffman.getChars(file);
+     }
+ }
+Index: chars.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chars.txt	(revision )
++++ chars.txt	(revision )
+@@ -0,0 +1,1 @@
++bbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz
+\ No newline at end of file
+Index: src/com/company/HuffmanTree.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/company/HuffmanTree.java	(revision bd5c166a05477ac8daad1860431ae658aadb13e6)
++++ src/com/company/HuffmanTree.java	(revision )
+@@ -17,8 +17,8 @@
+ 
+     public void getChars(File file) throws IOException {
+         BufferedReader reader;
+-        this.countHolder= new Node[26];
+-        Node temp;
++        int [] numberOfCharacters= new int[26];
++        //Node temp;
+         int ch;
+         int counter=0;
+         int i=0;
+@@ -30,15 +30,16 @@
+                 if(a==(char)ch){
+                     counter++;
+                 }
+-            }if(counter>0) {
+-                temp = new Node();
+-                temp.setName(toSearch);
+-                temp.setCount(counter);
+-                countHolder[i] = temp;
++            }
++                numberOfCharacters[i] = counter;        //this will show me which character has a certain value
+                 i++;
+-            }
++
++        }
++
++        for(i = 0;i<numberOfCharacters.length;i++){
++            System.out.println(numberOfCharacters[i]);
+         }
+-        Arrays.sort(countHolder);
++        //Arrays.sort(countHolder);
+     }
+ 
+ }
