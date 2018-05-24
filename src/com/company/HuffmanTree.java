@@ -17,8 +17,8 @@ public class HuffmanTree {
 
     public void getChars(File file) throws IOException {
         BufferedReader reader;
-        this.countHolder= new Node[26];
-        Node temp;
+        int [] numberOfCharacters= new int[26];
+        //Node temp;
         int ch;
         int counter=0;
         int i=0;
@@ -30,15 +30,16 @@ public class HuffmanTree {
                 if(a==(char)ch){
                     counter++;
                 }
-            }if(counter>0) {
-                temp = new Node();
-                temp.setName(toSearch);
-                temp.setCount(counter);
-                countHolder[i] = temp;
-                i++;
             }
+                numberOfCharacters[i] = counter;        //this will show me which character has a certain value
+                i++;
+
         }
-        Arrays.sort(countHolder);
+
+        for(i = 0;i<numberOfCharacters.length;i++){
+            System.out.println(numberOfCharacters[i]);
+        }
+        //Arrays.sort(countHolder);
     }
 
 }
