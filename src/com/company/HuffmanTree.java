@@ -22,6 +22,7 @@ public class HuffmanTree {
         int ch;
         int counter=0;
         int i=0;
+        int j = 97;
         for(char a:"abcdefghijklmnopqrstuvwxyz".toCharArray()){
             reader = new BufferedReader(new FileReader(file));
             char toSearch = a;
@@ -35,10 +36,13 @@ public class HuffmanTree {
                 i++;
 
         }
+        PrintWriter writer = new PrintWriter("output.txt");
 
         for(i = 0;i<numberOfCharacters.length;i++){
-            System.out.println(numberOfCharacters[i]);
+            writer.println((char)j+"-->"+numberOfCharacters[i]);
+            j++;
         }
+        writer.close();
         //Arrays.sort(countHolder);
     }
 
