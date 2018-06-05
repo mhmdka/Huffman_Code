@@ -17,11 +17,12 @@ public class HuffmanTree {
 
     public void getChars(File file) throws IOException {
         BufferedReader reader;
-        this.countHolder= new Node[26];
-        Node temp;
+        int [] numberOfCharacters= new int[26];
+        //Node temp;
         int ch;
         int counter=0;
         int i=0;
+        int j = 97;
         for(char a:"abcdefghijklmnopqrstuvwxyz".toCharArray()){
             reader = new BufferedReader(new FileReader(file));
             char toSearch = a;
@@ -30,15 +31,19 @@ public class HuffmanTree {
                 if(a==(char)ch){
                     counter++;
                 }
-            }if(counter>0) {
-                temp = new Node();
-                temp.setName(toSearch);
-                temp.setCount(counter);
-                countHolder[i] = temp;
-                i++;
             }
+                numberOfCharacters[i] = counter;        //this will show me which character has a certain value
+                i++;
+
         }
-        Arrays.sort(countHolder);
+        PrintWriter writer = new PrintWriter("output.txt");
+
+        for(i = 0;i<numberOfCharacters.length;i++){
+            writer.println((char)j+"-->"+numberOfCharacters[i]);
+            j++;
+        }
+        writer.close();
+        //Arrays.sort(countHolder);
     }
 
 }
